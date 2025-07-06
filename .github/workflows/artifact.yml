@@ -18,3 +18,18 @@ jobs:
       with:
         name: hello-artifact
         path: hello.txt
+  
+  download:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout-code
+      uses: actions/checkout@v4
+
+    - name: download-artifact
+      uses: actions/downlod-artifact@v4
+      with:
+        name: hello-artifact
+        path: ./artifacts
+
+    - name: display the contents of file
+      run: cat ./artifacts/hello.txt
